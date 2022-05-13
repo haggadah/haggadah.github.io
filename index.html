@@ -150,12 +150,12 @@
 
         <label>
           <input type="checkbox" checked="checked" name="vowels">
-          Show vowels and dagesh
+          Show diacritics (dots)
         </label>
-        <label>
-          <input type="checkbox" checked="checked" name="shinsin">
-          Show dots on ש
-        </label>
+        <!-- <label> -->
+        <!--   <input type="checkbox" checked="checked" name="shinsin"> -->
+        <!--   Show dots on ש -->
+        <!-- </label> -->
       </p>
       <br>
       <div class="title" role="heading" aria-level="1">
@@ -2358,10 +2358,10 @@
 
       const refreshVowels = () => {
         document.querySelectorAll('span').forEach(e => {
-          e.innerText = heb.remove(e.getAttribute('content') , {
+          e.innerText = heb.remove(heb.sequence(e.getAttribute('content')) , {
                           removeVowels: !document.querySelector('input[name="vowels"]').checked,
-                          removeShinDot: !document.querySelector('input[name="shinsin"]').checked,
-                          removeSinDot: !document.querySelector('input[name="shinsin"]').checked
+                          removeShinDot: false,
+                          removeSinDot: false,
                         })
         })
       }
